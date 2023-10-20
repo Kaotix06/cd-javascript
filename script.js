@@ -161,3 +161,88 @@ function ejercicio10(){
     console.log('La suma de sueldos es: ' + sumaSueldos + '€');
     console.log('Cantidad de sueldos mayores de 1000€: ' + mayoresDe1000);
 }
+
+/*11. Dadas las edades y alturas de 5 alumnos, mostrar la edad y la estatura media, la cantidad de alumnos mayores de 18 años y la cantidad de alumnos que miden más de 1.75.*/
+function ejercicio11(){
+    var edades = [];
+    var alturas = [];
+    var mayoresDe18 = 0;
+    var alturasMayoresDe175 = 0;
+
+    for (var i = 0; i < 5; i++) {
+        var edad = parseInt(prompt('Escribe la edad del alumno ' + (i + 1) + ':'));
+        var altura = parseFloat(prompt('Escribe la estatura del alumno ' + (i + 1) + ':'));
+    
+        edades.push(edad);
+        alturas.push(altura);
+    
+        if (edad > 18) {
+            mayoresDe18++;
+        }
+    
+        if (altura > 1.75) {
+            alturasMayoresDe175++;
+        }
+    }
+
+    var sumaEdades = edades.reduce(function(a, b) {
+        return a + b;
+    });
+
+    var mediaEdades = sumaEdades / 5;
+
+    var sumaAlturas = alturas.reduce(function(a, b) {
+        return a + b;
+    });
+
+    var mediaAlturas = sumaAlturas / 5;
+
+    console.log('Edad media de los alumnos: ' + mediaEdades);
+    console.log('Estatura media de los alumnos: ' + mediaAlturas);
+    console.log('Cantidad de alumnos mayores de 18 años: ' + mayoresDe18);
+    console.log('Cantidad de alumnos con estatura mayor a 1.75: ' + alturasMayoresDe175);
+}
+
+/*12. Pedir un número y mostrar si es primo o no.*/
+function ejercicio12(){
+    function esPrimo(numero) {
+        if (numero <= 1) {
+            return false;
+        }
+        if (numero <= 3) {
+            return true;
+        }
+        if (numero % 2 === 0 || numero % 3 === 0) {
+            return false;
+        }
+        for (var i = 5; i * i <= numero; i += 6) {
+            if (numero % i === 0 || numero % (i + 2) === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    var numero = parseInt(prompt('Escribe un número para verificar si es primo:'));
+    if (!isNaN(numero)) {
+        if (esPrimo(numero)) {
+            console.log(numero + ' es un número primo.');
+        } else {
+            console.log(numero + ' no es un número primo.');
+        }
+    } else {
+        console.log('Entrada no válida. Por favor, ingresa un número válido.');
+    }
+}
+
+/*13. Pedir un número y mostrar todos los números pares desde 1 hasta ese número.*/
+function ejercicio13(){
+    var numero = parseInt(prompt('Escribe un número:'));
+    if (!isNaN(numero)) {
+        for (var i = 2; i <= numero; i += 2) {
+            console.log(i);
+        }
+    } else {
+        console.log('Entrada no válida. Por favor, ingresa un número válido.');
+    }
+}
