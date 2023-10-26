@@ -748,14 +748,11 @@ function ejercicio49() {
   var partidasPerdidas = 0;
   var partidasEmpatadas = 0;
   var partidasJugadas = 0;
-
   function jugarPiedraPapelTijera() {
     var opciones = ["piedra", "papel", "tijera"];
-
     do {
       var eleccionJugador = prompt("Elige piedra, papel o tijera:").toLowerCase();
       var eleccionOrdenador = opciones[Math.floor(Math.random() * 3)];
-
       if (opciones.includes(eleccionJugador)) {
         if (eleccionJugador === eleccionOrdenador) {
           alert("Empate");
@@ -771,16 +768,13 @@ function ejercicio49() {
           alert("Ordenador gana");
           partidasPerdidas++;
         }
-
         partidasJugadas++;
       } else {
         alert("Elección no válida. Elige piedra, papel o tijera.");
       }
     } while (confirm("¿Deseas jugar de nuevo?"));
-
     mostrarResumen();
   }
-
   function mostrarResumen() {
     var resumen =
       "Partidas jugadas: " + partidasJugadas + "\n" +
@@ -789,6 +783,145 @@ function ejercicio49() {
       "Partidas empatadas: " + partidasEmpatadas;
     alert(resumen);
   }
-
   jugarPiedraPapelTijera();
+}
+
+/*50. Calcular la edad de una persona:
+- Solicitar al usuario su fecha de nacimiento.
+- Calcular la diferencia en años entre la fecha actual y la fecha de nacimiento.
+- Mostrar la edad resultante.*/
+function ejercicio50() {
+  var fechaNacimiento = prompt("Ingresa tu fecha de nacimiento (AAAA-MM-DD):");
+  var fechaNacimiento = new Date(fechaNacimiento);
+  var fechaActual = new Date();
+  var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+  alert("Tu edad es " + edad + " años.");
+}
+
+/*51. Calcular el tiempo transcurrido desde una fecha específica:
+- Solicitar al usuario una fecha en el pasado.
+- Calcular la diferencia en días, horas, minutos y segundos entre la fecha actual y la fecha ingresada.
+- Mostrar el tiempo transcurrido.*/
+function ejercicio51() {
+  var fechaPasada = new Date(prompt("Ingresa una fecha en el pasado (AAAA-MM-DD):"));
+  var fechaActual = new Date();
+  var diferencia = fechaActual - fechaPasada;
+  var segundos = Math.floor(diferencia / 1000);
+  var minutos = Math.floor(segundos / 60);
+  var horas = Math.floor(minutos / 60);
+  var dias = Math.floor(horas / 24);
+  alert("Han pasado " + dias + " días, " + horas % 24 + " horas, " + minutos % 60 + " minutos y " + segundos % 60 + " segundos desde la fecha ingresada.");
+}
+
+/*52. Obtener el día de la semana de una fecha específica:
+- Solicitar al usuario una fecha.
+- Obtener el día de la semana correspondiente a esa fecha.
+- Mostrar el día de la semana.*/
+function ejercicio52() {
+  var fechaIngresada = new Date(prompt("Ingresa una fecha (AAAA-MM-DD):"));
+  var diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  var diaSemana = fechaIngresada.getDay();
+  alert("El día de la semana correspondiente a la fecha ingresada es " + diasSemana[diaSemana] + ".");
+}
+
+/*53. Calcular la fecha de vencimiento de un plazo:
+- Solicitar al usuario una fecha de inicio y una duración en días.
+- Calcular la fecha de vencimiento sumando la duración a la fecha de inicio.
+- Mostrar la fecha de vencimiento.*/
+function ejercicio53() {
+  var fechaInicio = new Date(prompt("Ingresa la fecha de inicio (AAAA-MM-DD):"));
+  var duracionDias = parseInt(prompt("Ingresa la duración en días:"));
+  var fechaVencimiento = new Date(fechaInicio);
+  fechaVencimiento.setDate(fechaVencimiento.getDate() + duracionDias);
+  alert("La fecha de vencimiento es " + fechaVencimiento.toISOString().split('T')[0]);
+}
+
+/*54. Verificar si una fecha es un día festivo:
+- Solicitar al usuario una fecha.
+- Comprobar si esa fecha corresponde a un día festivo predefinido.
+- Mostrar si la fecha es un día festivo o no.*/
+function ejercicio54() {
+  var fechaIngresada = new Date(prompt("Ingresa una fecha (AAAA-MM-DD):"));
+  var festivos = ["2023-01-01", "2023-12-25"];
+  var esFestivo = festivos.includes(fechaIngresada.toISOString().split('T')[0]);
+  if (esFestivo) {
+    alert("La fecha ingresada es un día festivo.");
+  } else {
+    alert("La fecha ingresada no es un día festivo.");
+  }
+}
+
+/*55. Calcular la diferencia de días entre dos fechas:
+- Solicitar al usuario dos fechas.
+- Calcular la diferencia en días entre las dos fechas.
+- Mostrar la diferencia de días.*/
+function ejercicio55() {
+  var fecha1 = new Date(prompt("Ingresa la primera fecha (AAAA-MM-DD):"));
+  var fecha2 = new Date(prompt("Ingresa la segunda fecha (AAAA-MM-DD):"));
+  var diferenciaDias = Math.abs((fecha2 - fecha1) / (1000 * 60 * 60 * 24));
+  alert("La diferencia de días entre las dos fechas es " + diferenciaDias + " días.");
+}
+
+/*56. Obtener la fecha de inicio y fin de una semana específica:
+- Solicitar al usuario un número de semana y un año.
+- Calcular la fecha de inicio y fin de esa semana.
+- Mostrar la fecha de inicio y fin.*/
+function ejercicio56() {
+  var numeroSemana = parseInt(prompt("Ingresa un número de semana:"));
+  var año = parseInt(prompt("Ingresa un año:"));
+  var fechaInicio = new Date(año, 0, 1);
+  fechaInicio.setDate(1 + (numeroSemana - 1) * 7 - fechaInicio.getDay());
+  var fechaFin = new Date(fechaInicio);
+  fechaFin.setDate(fechaInicio.getDate() + 6);
+  alert("Fecha de inicio de la semana: " + fechaInicio.toISOString().split('T')[0]);
+  alert("Fecha de fin de la semana: " + fechaFin.toISOString().split('T')[0]);
+}
+
+/*57. Calcular el número de días hábiles entre dos fechas:
+- Solicitar al usuario una fecha de inicio y una fecha de fin.
+- Calcular el número de días hábiles (excluyendo fines de semana) entre las dos fechas.
+- Mostrar el número de días hábiles.*/
+function ejercicio57() {
+  var fechaInicio = new Date(prompt("Ingresa la fecha de inicio (AAAA-MM-DD):"));
+  var fechaFin = new Date(prompt("Ingresa la fecha de fin (AAAA-MM-DD):"));
+  var diasHabiles = 0;
+  while (fechaInicio <= fechaFin) {
+    if (fechaInicio.getDay() !== 0 && fechaInicio.getDay() !== 6) {
+      diasHabiles++;
+    }
+    fechaInicio.setDate(fechaInicio.getDate() + 1);
+  }
+  alert("El número de días hábiles entre las dos fechas es " + diasHabiles + " días.");
+}
+
+/*58. Obtener la fecha actual en diferentes formatos:
+- Obtener la fecha actual.
+- Mostrar la fecha en formatos diferentes, como "DD/MM/AAAA", "AAAA-MM-DD", "Día de la semana, DD de Mes de AAAA", etc.*/
+function ejercicio58() {
+  var fechaActual = new Date();
+  var opcionesFormato = {
+    "DD/MM/AAAA": fechaActual.getDate().toString().padStart(2, '0') + "/" + (fechaActual.getMonth() + 1).toString().padStart(2, '0') + "/" + fechaActual.getFullYear(),
+    "AAAA-MM-DD": fechaActual.toISOString().split('T')[0],
+    "Día de la semana, DD de Mes de AAAA": new Intl.DateTimeFormat('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).format(fechaActual)
+  };
+  var mensaje = "Formatos de la fecha actual:\n";
+  for (var formato in opcionesFormato) {
+    mensaje += formato + ": " + opcionesFormato[formato] + "\n";
+  }
+  alert(mensaje);
+}
+
+/*59. Generar una secuencia de fechas:
+- Solicitar al usuario una fecha de inicio y una fecha de fin.
+- Generar una secuencia de fechas diarias entre las dos fechas.
+- Mostrar todas las fechas generadas.*/
+function ejercicio59() {
+  var fechaInicio = new Date(prompt("Ingresa la fecha de inicio (AAAA-MM-DD):"));
+  var fechaFin = new Date(prompt("Ingresa la fecha de fin (AAAA-MM-DD):"));
+  var fechasGeneradas = [];
+  while (fechaInicio <= fechaFin) {
+    fechasGeneradas.push(fechaInicio.toISOString().split('T')[0]);
+    fechaInicio.setDate(fechaInicio.getDate() + 1);
+  }
+  alert("Fechas generadas:\n" + fechasGeneradas.join("\n"));
 }
