@@ -925,3 +925,61 @@ function ejercicio59() {
   }
   alert("Fechas generadas:\n" + fechasGeneradas.join("\n"));
 }
+
+/*60. Validación de Correo Electrónico:
+- Solicitar al usuario su correo electrónico.
+- Validar correo electrónico.
+- Mostrar si el correo electrónico es válido o no.*/
+function ejercicio60() {
+  var email = prompt("Ingresa tu dirección de correo electrónico:");
+  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if (email.match(emailRegex)) {
+    alert("El correo electrónico es válido.");
+  } else {
+    alert("El correo electrónico no es válido.");
+  }
+}
+
+/*61. Validar número de teléfono:
+- Solicitar al usuario su número de teléfono.
+- Validar número de teléfono.
+- Mostrar si el número de teléfono es válido o no.*/
+function ejercicio61() {
+  var telefono = prompt("Ingresa tu número de teléfono:");
+  var telefonoRegex = /^\d{3} \d{3} \d{3}$/;
+  if (telefono.match(telefonoRegex)) {
+    alert("El número de teléfono es válido.");
+  } else {
+    alert("El número de teléfono no es válido.");
+  }
+}
+
+/*62. A partir del siguiente texto, debes encontrar con una función los números de teléfono y mostrarlos por pantalla:
+- “Mi número de teléfono es 123-456-7890 y otro número es 555-555-5555.”
+- Obtener los números de teléfono del texto.
+- Mostrar los números de teléfono por pantalla.*/
+function ejercicio62() {
+  var texto = "Mi número de teléfono es 123-456-7890 y otro número es 555-555-5555.";
+  var telefonosEncontrados = texto.match(/\d{3}-\d{3}-\d{4}/g);
+  if (telefonosEncontrados) {
+    alert("Números de teléfono encontrados: " + telefonosEncontrados.join(", "));
+  } else {
+    alert("No se encontraron números de teléfono en el texto.");
+  }
+}
+
+/*63. A partir del siguiente texto debes reemplazar la palabra “gato”:
+Los niños tenían un gato en casa.
+El gato era un gato travieso.
+El gato solía subirse a los árboles.
+Los niños amaban al gato.
+El gato, el gato, el gato, siempre el gato.
+- Crear una función que reemplace la palabra “gato” por la que se le mande por parámetro.
+- Mostrar el texto modificado.*/
+function ejercicio63() {
+  var texto = "Los niños tenían un gato en casa. El gato era un gato travieso. El gato solía subirse a los árboles. Los niños amaban al gato. El gato, el gato, el gato, siempre el gato.";
+  var palabraAReemplazar = "gato";
+  var nuevaPalabra = prompt("Ingresa la palabra con la que deseas reemplazar 'gato':");
+  var textoModificado = texto.replace(new RegExp(palabraAReemplazar, 'g'), nuevaPalabra);
+  alert("Texto modificado:\n" + textoModificado);
+}

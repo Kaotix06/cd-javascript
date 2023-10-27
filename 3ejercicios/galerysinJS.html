@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8">
+  <title>Galería de Imágenes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    #galleryContainer {
+      width: 600px;
+      height: 400px;
+      border: 1px solid #ccc;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .galleryImage {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .galleryControls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .galleryControls button {
+      margin: 0 5px;
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .galleryControls button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Galería de Imágenes</h1>
+
+  <div id="galleryContainer">
+    <img class="galleryImage" src="img1.jpg" alt="Imagen 1">
+    <img class="galleryImage" src="img2.jpg" alt="Imagen 2">
+    <img class="galleryImage" src="img3.jpg" alt="Imagen 3">
+  </div>
+
+  <div class="galleryControls">
+    <button id="prevButton" onClick="previous()">Anterior</button>
+    <button id="nextButton" onClick="next()">Siguiente</button>
+  </div>
+
+  <script>
+  </script>
+</body>
+
+</html>

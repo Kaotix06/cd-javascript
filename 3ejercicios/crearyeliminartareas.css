@@ -1,0 +1,46 @@
+h1 {
+  text-align: center;
+}
+
+#formulario {
+  text-align: center;
+}
+
+button {
+  background-color: green;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+}
+
+.tareas {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+  margin: 5px 5px;
+  padding: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.tarea-completada {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.eliminar {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  margin-left: 5px;
+}

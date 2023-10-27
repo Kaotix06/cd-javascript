@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8">
+  <title>Lista de Tareas</title>
+  <link rel="stylesheet" type="text/css" href="crearyeliminartareas.css">
+  <style>
+  </style>
+</head>
+
+<body>
+  <h1>Lista de Tareas</h1>
+
+  <div id="formulario">
+    <input type="text" id="tarea" placeholder="Ingrese una tarea">
+    <button onclick="agregarTarea()">Agregar tarea</button>
+  </div>
+
+  <div id="tareas-completadas">
+    <h2>Tareas Completadas</h2>
+    <ul id="lista-completadas"></ul>
+  </div>
+
+  <div id="tareas-pendientes">
+    <h2>Tareas Pendientes</h2>
+    <ul id="lista-pendientes"></ul>
+  </div>
+
+  <script src="crearyeliminartareasscript.js"></script>
+</body>
+
+</html>
