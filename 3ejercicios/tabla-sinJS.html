@@ -48,6 +48,27 @@
 
   <script>
     function agregarFila() {
+      // Obtener los valores ingresados en los campos de entrada
+      var nombre = document.getElementById("nombre").value;
+      var apellido = document.getElementById("apellido").value;
+      // Obtener la tabla y su cuerpo (tbody)
+      var tabla = document.getElementById("miTabla");
+      var tbody = tabla.getElementsByTagName("tbody")[0];
+      // Crear una nueva fila (tr)
+      var fila = document.createElement("tr");
+      // Crear dos celdas (td) y asignar los valores ingresados
+      var celdaNombre = document.createElement("td");
+      celdaNombre.textContent = nombre;
+      var celdaApellido = document.createElement("td");
+      celdaApellido.textContent = apellido;
+      // Agregar las celdas a la fila
+      fila.appendChild(celdaNombre);
+      fila.appendChild(celdaApellido);
+      // Agregar la fila al cuerpo de la tabla
+      tbody.appendChild(fila);
+      // Limpiar los campos de entrada
+      document.getElementById("nombre").value = "";
+      document.getElementById("apellido").value = "";
     }
   </script>
 </body>

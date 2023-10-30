@@ -14,7 +14,6 @@
       border: 1px solid black;
       padding: 8px;
     }
-
   </style>
 </head>
 
@@ -47,12 +46,74 @@
     <input type="text" id="nombre">
     <label for="apellido">Apellido:</label>
     <input type="text" id="apellido">
-    <label for="edad">Edad:</label>
-    <input type="number" id="edad">
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input type="date" id="fechaNacimiento">
     <button type="button" onclick="agregarFila()">Agregar Fila</button>
   </form>
 
   <script>
+    function calcularEdad(fechaNacimiento) {
+      const fechaNacimientoDate = new Date(fechaNacimiento);
+      const hoy = new Date();
+      const edadMilisegundos = hoy - fechaNacimientoDate;
+      const edad = new Date(edadMilisegundos);
+      return Math.abs(edad.getUTCFullYear() - 1970);
+    }
+
+    function agregarFila() {
+      // Obtener valores ingresados
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
+      const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+
+      // Calcular la edad
+      const edad = calcularEdad(fechaNacimiento);
+
+      // Validar que todos los campos estén completos
+      if (!nombre || !apellido || !fechaNacimiento) {
+        alert("Por favor, complete todos los campos, incluyendo la fecha de nacimiento.");
+        return;
+      }
+
+      // Verificar si es mayor o igual a 18 años
+      if (edad >= 18) {
+        // Crear una nueva fila y celdas
+        const tabla = document.getElementById("miTabla");
+        const tbody = tabla.querySelector("tbody");
+        const fila = document.createElement("tr");
+        const celdaNombre = document.createElement("td");
+        const celdaApellido = document.createElement("td");
+        const celdaEdad = document.createElement("td");
+        const celdaAcciones = document.createElement("td");
+
+        // Asignar valores a las celdas
+        celdaNombre.textContent = nombre;
+        celdaApellido.textContent = apellido;
+        celdaEdad.textContent = edad; // Mostrar la edad en lugar del año
+        celdaAcciones.innerHTML = '<button onclick="eliminarFila(this)">Eliminar</button>';
+
+        // Agregar las celdas a la fila
+        fila.appendChild(celdaNombre);
+        fila.appendChild(celdaApellido);
+        fila.appendChild(celdaEdad);
+        fila.appendChild(celdaAcciones);
+
+        // Agregar la fila al cuerpo de la tabla
+        tbody.appendChild(fila);
+
+        // Limpiar los campos de entrada
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellido").value = "";
+        document.getElementById("fechaNacimiento").value = "";
+      } else {
+        alert("El participante debe ser mayor de 18 años.");
+      }
+    }
+
+    function eliminarFila(botonEliminar) {
+      const fila = botonEliminar.parentNode.parentNode;
+      fila.remove();
+    }
   </script>
 </body>
 
